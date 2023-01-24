@@ -7,8 +7,6 @@ public class ProductRule
     public long ProductId { get; set; }
 
     public long RuleId { get; set; }
-
-    //public DateTime? InsertedOn { get; set; }
     
     public Product Product { get; set; }
     

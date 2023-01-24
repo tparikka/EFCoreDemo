@@ -24,4 +24,51 @@ public class ProductController : ControllerBase
 
         return result;
     }
+
+    [HttpPost]
+    [Route("Test")]
+    public async Task<bool> PublishProducts()
+    {
+        var p1 = new Product()
+        {
+            ProductDescription = "Test",
+            InsertedOn = DateTime.Now,
+            Rules = new List<Rule>()
+            {
+                new()
+                {
+                    InsertedOn = DateTime.Now,
+                    RuleDescription = "Test"
+                },
+                new()
+                {
+                    InsertedOn = DateTime.Now,
+                    RuleDescription = "Test2"
+                }
+            }
+        };
+
+        var p2 = new Product()
+        {
+            ProductDescription = "Test2",
+            InsertedOn = DateTime.Now,
+            Rules = new List<Rule>()
+            {
+                new()
+                {
+                    InsertedOn = DateTime.Now,
+                    RuleDescription = "Test"
+                },
+                new()
+                {
+                    InsertedOn = DateTime.Now,
+                    RuleDescription = "Test2"
+                }
+            }
+        };
+
+        var result = await _productService.SaveNewProducts(new[] {p1, p2});
+
+        return result;
+    }
 }
