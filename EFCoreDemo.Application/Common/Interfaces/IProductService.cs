@@ -1,6 +1,6 @@
-﻿using EFCoreDemoApi.Domain.Entities;
+﻿using EFCoreDemo.Domain.Entities;
 
-namespace EFCoreDemoApi.Application.Common.Interfaces;
+namespace EFCoreDemo.Application.Common.Interfaces;
 
 public interface IProductService
 {

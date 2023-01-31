@@ -1,16 +1,14 @@
-﻿using EFCoreDemoApi.Domain.Entities;
+﻿using EFCoreDemo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EFCoreDemoApi.Infrastructure.Persistence.Configuration;
+namespace EFCoreDemo.Infrastructure.Persistence.Configuration;
 
 public class RuleConfiguration : IEntityTypeConfiguration<Rule>
 {
     public void Configure(EntityTypeBuilder<Rule> entityTypeBuilder)
     {
         // Tables / Keys
-        entityTypeBuilder.ToTable("Rule");
-        entityTypeBuilder.HasKey(rule => rule.RuleId);
 
         // Relationships
         entityTypeBuilder
@@ -31,9 +29,5 @@ public class RuleConfiguration : IEntityTypeConfiguration<Rule>
                 });
 
         // Properties
-        entityTypeBuilder
-            .Property(rule => rule.InsertedOn)
-            .HasColumnType("datetime")
-            .HasDefaultValueSql("getdate()");
     }
 }

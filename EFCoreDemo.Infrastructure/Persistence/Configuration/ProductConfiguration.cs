@@ -1,18 +1,19 @@
-﻿using EFCoreDemoApi.Domain.Entities;
+﻿using EFCoreDemo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EFCoreDemoApi.Infrastructure.Persistence.Configuration;
+namespace EFCoreDemo.Infrastructure.Persistence.Configuration;
 
 public class ProductConfiguration : IEntityTypeConfiguration<Product>
 {
     public void Configure(EntityTypeBuilder<Product> entityTypeBuilder)
     {
         // Tables / Keys
-        entityTypeBuilder.ToTable("Product");
-        entityTypeBuilder.HasKey(product => product.ProductId);
+        // Table name not needed due to EF Core conventions
+        // Primary key not needed due to EF Core conventions
 
         // Relationships
+        // Complex many/many relationship provided where EF Core does not know relationship by convention
         entityTypeBuilder
             .HasMany(product => product.Rules)
             .WithMany(rule => rule.Products)
@@ -31,9 +32,5 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
                 });
 
         // Properties
-        entityTypeBuilder
-            .Property(product => product.InsertedOn)
-            .HasColumnType("datetime")
-            .HasDefaultValueSql("getdate()");
     }
 }

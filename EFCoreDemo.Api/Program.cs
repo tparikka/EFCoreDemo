@@ -1,6 +1,6 @@
-using EFCoreDemoApi.Application.Common.Interfaces;
-using EFCoreDemoApi.Infrastructure;
-using EFCoreDemoApi.Infrastructure.Services;
+using EFCoreDemo.Application.Common.Interfaces;
+using EFCoreDemo.Infrastructure.Persistence;
+using EFCoreDemo.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,14 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<DbContext, DbContext>();
+builder.Services.AddScoped<IInRuleDbContext, InRuleDbContext>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(
+builder.Services.AddDbContext<InRuleDbContext>(options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("EFCoreScratchDatabase"),
         o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
     .EnableSensitiveDataLogging()
-    .LogTo(Console.WriteLine, LogLevel.Information));
+    .LogTo(Console.WriteLine));
 
 var app = builder.Build();
 

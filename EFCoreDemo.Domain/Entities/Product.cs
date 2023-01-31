@@ -1,4 +1,4 @@
-﻿namespace EFCoreDemoApi.Domain.Entities;
+﻿namespace EFCoreDemo.Domain.Entities;
 
 public class Product
 {

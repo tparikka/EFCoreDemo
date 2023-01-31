@@ -1,16 +1,15 @@
-﻿using EFCoreDemoApi.Domain.Entities;
+﻿using EFCoreDemo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EFCoreDemoApi.Infrastructure.Persistence.Configuration;
+namespace EFCoreDemo.Infrastructure.Persistence.Configuration;
 
 public class ProductRuleConfiguration : IEntityTypeConfiguration<ProductRule>
 {
     public void Configure(EntityTypeBuilder<ProductRule> entityTypeBuilder)
     {
         // Tables / Keys
-        entityTypeBuilder.ToTable("Product_Rule");
-        entityTypeBuilder.HasKey(product => product.ProductRuleId);
+        entityTypeBuilder.ToTable("Product_Rule"); // Provided as EF Core does not know this by convention
 
         // Relationships
         entityTypeBuilder

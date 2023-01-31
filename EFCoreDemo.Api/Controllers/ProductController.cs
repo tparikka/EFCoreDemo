@@ -1,8 +1,8 @@
-﻿using EFCoreDemoApi.Application.Common.Interfaces;
-using EFCoreDemoApi.Domain.Entities;
+﻿using EFCoreDemo.Application.Common.Interfaces;
+using EFCoreDemo.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EFCoreDemoApi.Controllers;
+namespace EFCoreDemo.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
